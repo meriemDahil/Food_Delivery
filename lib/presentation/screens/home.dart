@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery/presentation/screens/food_slider.dart';
 import 'package:food_delivery/widget/rounded_btn.dart';
 import 'package:food_delivery/widget/text.dart';
 
@@ -27,7 +28,8 @@ class _HomeState extends State<Home> {
                     SmallText(text: 'city')
                   ],
                  ),
-                 RoundedButton(icon: Icons.search,)
+                 RoundedButton(icon: Icons.search,),
+                 const FoodSlider(),
                
                 ],
               ),

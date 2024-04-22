@@ -15,7 +15,7 @@ class BigText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       text,
        maxLines: 1,
        style: TextStyle(
@@ -48,8 +48,8 @@ class SmallText extends StatelessWidget {
        style: TextStyle(
         fontSize: size,
         color: color,
+        height: 1.3
        // overflow: textOverflow
-        
       ),
     );
   }
