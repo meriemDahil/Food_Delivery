@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
                   ],
                  ),
                  RoundedButton(icon: Icons.search,),
-                 const FoodSlider(),
+                // const FoodSlider(),
                
                 ],
               ),
