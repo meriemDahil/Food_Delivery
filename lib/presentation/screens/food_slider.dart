@@ -15,6 +15,7 @@ class _FoodSliderState extends State<FoodSlider> {
     return Container(
       height: 320,
       //its necessary to add the height 
+      
       child: PageView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
