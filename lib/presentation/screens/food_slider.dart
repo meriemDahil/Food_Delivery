@@ -12,7 +12,7 @@ class FoodSlider extends StatefulWidget {
 class _FoodSliderState extends State<FoodSlider> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 320,
       //its necessary to add the height 
       
