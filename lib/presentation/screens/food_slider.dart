@@ -13,7 +13,7 @@ class _FoodSliderState extends State<FoodSlider> {
   Widget build(BuildContext context) {
     return Container(
       height: 320,
-      color: Colors.blue,
+      //its necessary to add the height 
       child: PageView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
@@ -24,9 +24,15 @@ class _FoodSliderState extends State<FoodSlider> {
   }
   Widget _buildPage(int index){
     return Container(
-      height: 220,
-      color: Colors.amber,
+      
+      margin: EdgeInsets.only(left:  5,right: 5),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        color: Colors.amber,),
 
     );
   }
 }
+
+///
+///in order to run our app u should first execute the db

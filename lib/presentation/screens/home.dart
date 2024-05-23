@@ -25,15 +25,19 @@ class _HomeState extends State<Home> {
                  Column(
                   children: [
                     BigText(text: 'Country'),
-                    SmallText(text: 'city')
+                    Row(
+                      children: [
+                        SmallText(text: 'city'),
+                        Icon(Icons.arrow_drop_down_rounded)
+                      ],
+                    ),
                   ],
                  ),
                  RoundedButton(icon: Icons.search,),
-                // const FoodSlider(),
-               
                 ],
               ),
             ),
+            FoodSlider(),
           ],
         ),
       ),
