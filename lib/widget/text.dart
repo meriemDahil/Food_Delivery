@@ -10,7 +10,7 @@ class BigText extends StatelessWidget {
 
   BigText({super.key ,
   required this.text,
-  this.size=30.0,
+  this.size=27.0,
   this.color=const Color.fromARGB(255, 0, 0, 0),
   this.textOverflow=TextOverflow.ellipsis});
 
@@ -37,9 +37,9 @@ class SmallText extends StatelessWidget {
   TextOverflow textOverflow;
 
   SmallText({super.key ,required this.text,
-  this.size=20.0,
+  this.size=15.0,
   // the color should have this format or hex only when initializing it 
-  this.color=Colors.black,
+  this.color=const Color.fromARGB(255, 43, 43, 43),
   this.textOverflow=TextOverflow.ellipsis});
 
   @override
@@ -50,8 +50,8 @@ class SmallText extends StatelessWidget {
        style: TextStyle(
         fontSize: size,
         color: color,
-        height: 1.3
-       // overflow: textOverflow
+        height: 1.3,
+        overflow: textOverflow
       ),
     );
   }

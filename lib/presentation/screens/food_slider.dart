@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery/utils/color.dart';
+import 'package:food_delivery/widget/reusable_icon_text_widget.dart';
 import 'package:food_delivery/widget/text.dart';
 
 class FoodSlider extends StatefulWidget {
@@ -20,7 +21,7 @@ class _FoodSliderState extends State<FoodSlider> {
     return  Container(
       height: 320,
       //its necessary to add the height 
-      // color: Colors.deepPurple,
+      color: Colors.deepPurple,
       child: PageView.builder(
         controller: pageController,
         itemCount: 5,
@@ -37,7 +38,7 @@ class _FoodSliderState extends State<FoodSlider> {
           // this container takes the size of it parent container 
           // to make take it supposed size we  wrap it in a stack 
           height: 240,
-          margin: EdgeInsets.only(left:  15,right: 15),
+          margin: EdgeInsets.only(left:  10,right: 10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
             color: Colors.amber,
@@ -71,9 +72,20 @@ class _FoodSliderState extends State<FoodSlider> {
                   Wrap(
                     //List.generate is used to create list of children it takes a lengh and return a function which can be an widget
                     children: List.generate(5, (index) =>Icon( Icons.star,color: AppColors.mainColor,size: 15,)),
-                  )
+                  ),
+                  SizedBox(width: 10,),
+                  SmallText(text: '3.5k'),
+                  SizedBox(width: 10,),
+                  SmallText(text: '128 comments')              
                 ],
-              )
+              ),
+              SizedBox(height: 20,),
+              Row(children: [
+                IconText(icon: Icons.circle_sharp, text: 'Normal',iconColor: Color.fromARGB(255, 219, 133, 21)),
+                IconText(icon: Icons.location_on, text: 'Location ',iconColor: Color.fromARGB(255, 121, 167, 81)),
+                IconText(icon: Icons.access_time_rounded, text: '23min',iconColor: Color.fromARGB(255, 243, 50, 33)),
+
+              ],)
 
             ],),
           ),
