@@ -16,12 +16,33 @@ class FoodSlider extends StatefulWidget {
 class _FoodSliderState extends State<FoodSlider> {
  // PageView.builder has controller we are using it to show a littlebit of the previous and next pageview
   PageController  pageController=PageController(viewportFraction: 0.85);
+  var _currentPageValue=0.0;
+  double _scaleFactor=0.8;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    pageController.addListener(() {
+      setState(() {
+        _currentPageValue=pageController.page!;
+        //print("current value is "+_currentPageValue.toString());
+      });
+    });
+  }
+  @override
+  void dispose(){
+    super.dispose();
+    pageController.dispose();
+  }
+  
+  @override
+  
   Widget build(BuildContext context) {
     return  Container(
       height: 320,
       //its necessary to add the height 
-      color: Colors.deepPurple,
+      //color: Colors.deepPurple,
+      //every page has index and page value 
       child: PageView.builder(
         controller: pageController,
         itemCount: 5,
@@ -32,6 +53,13 @@ class _FoodSliderState extends State<FoodSlider> {
     );
   }
   Widget _buildPage(int index){
+    Matrix4 matrix =new Matrix4.identity();
+    if (index == _currentPageValue.floor()){
+      var currentScale =1-(_currentPageValue-index)*(1-_scaleFactor);
+
+    }else if(index==_currentPageValue.floor()+1){
+      var currScale =_scaleFactor+(_currentPageValue-index+1)*(1-_scaleFactor);
+    }
     return Stack(
       children: [
         Container(
