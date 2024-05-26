@@ -18,6 +18,7 @@ class _FoodSliderState extends State<FoodSlider> {
   PageController  pageController=PageController(viewportFraction: 0.85);
   var _currentPageValue=0.0;
   double _scaleFactor=0.8;
+  double _height=240;
   @override
   void initState() {
     // TODO: implement initState
@@ -55,72 +56,80 @@ class _FoodSliderState extends State<FoodSlider> {
   Widget _buildPage(int index){
     Matrix4 matrix =new Matrix4.identity();
     if (index == _currentPageValue.floor()){
-      var currentScale =1-(_currentPageValue-index)*(1-_scaleFactor);
+      var currScale =1-(_currentPageValue-index)*(1-_scaleFactor);
+      var currTrans= _height*(1-currScale)/2;
+      matrix =Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, currTrans , 0);
 
     }else if(index==_currentPageValue.floor()+1){
       var currScale =_scaleFactor+(_currentPageValue-index+1)*(1-_scaleFactor);
+       var currTrans= _height*(1-currScale)/2;
+       matrix =Matrix4.diagonal3Values(1, currScale, 1);
+       matrix =Matrix4.diagonal3Values(1, currScale, 1)..setTranslationRaw(0, currTrans , 0);
     }
-    return Stack(
-      children: [
-        Container(
-          // this container takes the size of it parent container 
-          // to make take it supposed size we  wrap it in a stack 
-          height: 240,
-          margin: EdgeInsets.only(left:  10,right: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: Colors.amber,
-            image:DecorationImage(
-              image:AssetImage('assets/Recipe idea Conchiglioni with ricotta and petits pois.jpeg') ,
-              fit:BoxFit.cover,
-              
-              ),
-              
-        
-        ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: 140,
-            margin: EdgeInsets.only(left: 30,right: 30,bottom: 10),
+    return Transform(
+      transform: matrix,
+      child: Stack(
+        children: [
+          Container(
+            // this container takes the size of it parent container 
+            // to make take it supposed size we  wrap it in a stack 
+            height: 240,
+            margin: EdgeInsets.only(left:  10,right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
-              color: Colors.white,
-          ),
-          child: Container(
-            padding: EdgeInsets.only(top: 15,left: 15,right: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              BigText(text: 'Conchiglioni'),
-              SizedBox(height: 10,),
-              Row(
-                children: [
-                  Wrap(
-                    //List.generate is used to create list of children it takes a lengh and return a function which can be an widget
-                    children: List.generate(5, (index) =>Icon( Icons.star,color: AppColors.mainColor,size: 15,)),
-                  ),
-                  SizedBox(width: 10,),
-                  SmallText(text: '3.5k'),
-                  SizedBox(width: 10,),
-                  SmallText(text: '128 comments')              
-                ],
-              ),
-              SizedBox(height: 20,),
-              Row(children: [
-                IconText(icon: Icons.circle_sharp, text: 'Normal',iconColor: Color.fromARGB(255, 219, 133, 21)),
-                IconText(icon: Icons.location_on, text: 'Location ',iconColor: Color.fromARGB(255, 121, 167, 81)),
-                IconText(icon: Icons.access_time_rounded, text: '23min',iconColor: Color.fromARGB(255, 243, 50, 33)),
-
-              ],)
-
-            ],),
-          ),
+              color: Colors.amber,
+              image:DecorationImage(
+                image:AssetImage('assets/Recipe idea Conchiglioni with ricotta and petits pois.jpeg') ,
+                fit:BoxFit.cover,
+                
+                ),
+                
           
           ),
-        )
-      ],
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              height: 140,
+              margin: EdgeInsets.only(left: 30,right: 30,bottom: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.white,
+            ),
+            child: Container(
+              padding: EdgeInsets.only(top: 15,left: 15,right: 15),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                BigText(text: 'Conchiglioni'),
+                SizedBox(height: 10,),
+                Row(
+                  children: [
+                    Wrap(
+                      //List.generate is used to create list of children it takes a lengh and return a function which can be an widget
+                      children: List.generate(5, (index) =>Icon( Icons.star,color: AppColors.mainColor,size: 15,)),
+                    ),
+                    SizedBox(width: 10,),
+                    SmallText(text: '3.5k'),
+                    SizedBox(width: 10,),
+                    SmallText(text: '128 comments')              
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Row(children: [
+                  IconText(icon: Icons.circle_sharp, text: 'Normal',iconColor: Color.fromARGB(255, 219, 133, 21)),
+                  IconText(icon: Icons.location_on, text: 'Location ',iconColor: Color.fromARGB(255, 121, 167, 81)),
+                  IconText(icon: Icons.access_time_rounded, text: '23min',iconColor: Color.fromARGB(255, 243, 50, 33)),
+      
+                ],)
+      
+              ],),
+            ),
+            
+            ),
+          )
+        ],
+      ),
     );
   }
 }
