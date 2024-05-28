@@ -206,4 +206,6 @@ Here, the next page's scale factor is almost at its maximum because it's almost 
     Next Page:
         currScale scales up from _scaleFactor to 1.
 
+.floor() return the integer part
+
  */
