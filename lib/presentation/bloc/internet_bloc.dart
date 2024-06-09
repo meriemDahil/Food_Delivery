@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:meta/meta.dart';
-
 part 'internet_event.dart';
 part 'internet_state.dart';
 
@@ -20,7 +19,7 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
     });
 
     _subscription = Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> results) {
-      // Check if any of the results indicate connectivity
+      
       if (results.any((result) => result == ConnectivityResult.wifi || result == ConnectivityResult.mobile)) {
         add(ConnectedEvent());
       } else {
