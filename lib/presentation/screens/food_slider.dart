@@ -123,8 +123,21 @@ class _FoodSliderState extends State<FoodSlider> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.white,
+                  boxShadow: const [
+                  BoxShadow(
+                    color: Color.fromARGB(77, 201, 199, 199),
+                    offset:  Offset(5, 5),
+                    blurRadius: 5.0
+                  ),
+                  BoxShadow(
+                    color: Colors.white,
+                    offset: Offset(-5, 0)
+
+                  )
+                ]
             ),
             child: Container(
+              
               padding: EdgeInsets.only(top: 15,left: 15,right: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
