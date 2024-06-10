@@ -1,4 +1,5 @@
 
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/color.dart';
 import 'package:food_delivery/widget/reusable_icon_text_widget.dart';
@@ -40,18 +41,32 @@ class _FoodSliderState extends State<FoodSlider> {
   @override
   
   Widget build(BuildContext context) {
-    return  Container(
-      height: 320,
-      //its necessary to add the height 
-      //color: Colors.deepPurple,
-      //every page has index and page value 
-      child: PageView.builder(
-        controller: pageController,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          return _buildPage(index);
-        },
-      ),
+    return  Column(
+      children: [
+        Container(
+          height: 320,
+          //its necessary to add the height 
+          //color: Colors.deepPurple,
+          //every page has index and page value 
+          child: PageView.builder(
+            controller: pageController,
+            itemCount: 5,
+            itemBuilder: (context, index) {
+              return _buildPage(index);
+            },
+          ),
+        ),
+        DotsIndicator(
+        dotsCount: 5,
+        position: _currentPageValue.toInt(),
+        decorator: DotsDecorator(
+          activeColor: Colors.yellow,
+          size: const Size.square(9.0),
+          activeSize: const Size(18.0, 9.0),
+          activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+        ),
+),
+      ],
     );
   }
   Widget _buildPage(int index){
